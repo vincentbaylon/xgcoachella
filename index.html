@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XG Coachella Week 2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .blur-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        filter: blur(75px);
+        transform: scale(1.1);
+        z-index: -1;
+        opacity: 0.25;
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen flex flex-col items-center justify-center bg-gray-900 text-white p-4">
+    <!-- Blurred Background -->
+    <div class="blur-bg" id="blurBackground"></div>
+
+    <!-- Main Content -->
+    <div class="max-w-2xl w-full flex flex-col items-center gap-2">
+      <!-- Artwork -->
+      <div
+        class="w-full max-w-md aspect-square rounded-lg overflow-hidden shadow-2xl">
+        <img
+          id="artwork"
+          src="assets/xgredoutfits.png"
+          alt="XG Red Outfits"
+          class="w-full h-full object-cover" />
+      </div>
+
+      <!-- Audio Player and Download Button -->
+      <div class="w-full max-w-md flex flex-col gap-4">
+        <div class="bg-black/50 backdrop-blur-sm rounded-lg p-4">
+          <audio controls class="w-full">
+            <source src="assets/XGCoachellaWeek2.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+        <a
+          href="assets/XGCoachellaWeek2.mp3"
+          download="XG Coachella Week 2.mp3"
+          class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-center transition-colors duration-200">
+          Download Audio
+        </a>
+      </div>
+    </div>
+
+    <script>
+      // Set the blurred background to match the artwork
+      document.addEventListener('DOMContentLoaded', () => {
+        const artwork = document.getElementById('artwork');
+        const blurBackground = document.getElementById('blurBackground');
+
+        // Set the background image to match the artwork
+        blurBackground.style.backgroundImage = `url(${artwork.src})`;
+
+        // Update background when artwork loads
+        artwork.onload = () => {
+          blurBackground.style.backgroundImage = `url(${artwork.src})`;
+        };
+      });
+    </script>
+  </body>
+</html>
